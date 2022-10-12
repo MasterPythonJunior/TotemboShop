@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+<main>
+    <!-- BLOCKS GUARANTEES START -->
+    {% include 'store/components/_guarantees.html' %}
+
+    <!-- BLOCKS GUARANTEES START -->
+    {% for category in categories %}
+    <section class="products-section products_section-watches">
+        <!-- SECTION QUARTZ EDITION START -->
+        <h2 class="main_title text-center">{{ category.title }}</h2>
+        <div class="container">
+            <div class="row">
+                {% for product in category.products %}
+                    {% include 'store/components/_product_card.html' %}
+                {% endfor %}
+            </div>
+        </div>
+        <!-- SECTION QUARTZ EDITION END -->
+    </section>
+    {% endfor %}
+
+
+
+    <!-- SLIDER BLOCK START -->
+    <div class="owl-carousel">
+        <div class="owl-carousel_block">
+            <h3 class="owl-carousel_block-title">You may also like</h3>
+        </div>
+        {% for category in categories %}
+        <div class="owl-carousel_block owl-carousel_block-bg">
+            <div class="owl-carousel_block-content">
+                <img src="{{ category.image }}" alt="">
+            </div>
+            <a href="" class="owl-carousel_block-hover">
+                <p class="owl-carousel_block-desc">{{ category.title }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- SLIDER BLOCK END -->
+
+    <!-- BLOCK EMAIL FORM START -->
+    {% include 'store/components/_email_form.html' %}
+
+    <!-- BLOCK EMAIL FORM END -->
+</main>
+{% endblock main %}

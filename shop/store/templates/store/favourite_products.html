@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block header_text %}
+{% endblock header_text %}
+
+<!-- HEADER TEXT BLOCK END -->
+
+<!-- HEADER POSTER START -->
+{% block header_poster %}
+{% endblock header_poster %}
+
+
+{% block main %}
+<main>
+    <section class="category_products">
+        <!-- PRODUCTS BLOCK START -->
+        <div class="container">
+            <div class="row">
+                {% for product in products %}
+                    {% include 'store/components/_product_card.html' %}
+
+                {% empty %}
+                <h2 class="text-center">Нет избранных товаров</h2>
+
+                {% endfor %}
+            </div>
+        </div>
+        <!-- PRODUCTS BLOCK END -->
+    </section>
+</main>
+{% endblock main %}
